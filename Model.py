@@ -2,13 +2,18 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math
 import scipy.constants as const
-
+g = const.g  # gravitational constant
+x_length = 1
+Length_ratio = 3.75 #y/x
+Counterweight = 50
+fruit_weight = 0.5
+initial_angle = 90
+Launch angle = 
 print('I added something.')
 # -----------------------分割线----------------------------------------
 
 # When the coefficient is very large, it could cause stack overflow
 
-g = const.g  # gravitational constant
 dt = 1e-9  # integration time step (delta t)
 v0 = 15  # Average speed at t=0
 v0min = 30  # Minimum Speed
