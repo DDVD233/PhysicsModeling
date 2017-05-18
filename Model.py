@@ -3,13 +3,13 @@ import numpy as np
 import math
 import scipy.constants as const
 g = const.g  # gravitational constant
-x_length = 1
-Length_ratio = 3.75 #y/x
-Counterweight = 50
-fruit_weight = 0.5
+x_length = 1  # Length of x
+Length_ratio = 3.75  # y/x
+Counterweight = 50  # Mass of the counterweight
+fruit_weight = 0.02  # Mass of the fruit (kg)
 initial_angle = 90
-Launch angle = 
-print('I added something.')
+launch_angle = 45  # Launch Angle (degree)
+
 # -----------------------分割线----------------------------------------
 
 # When the coefficient is very large, it could cause stack overflow
@@ -22,11 +22,10 @@ time = np.arange(0, 2000, dt)  # create time axis
 c = 0.47  # Drag Coefficient
 p = 1.225  # Density of the air (kg/m^3)
 A = 0.01  # Surface Area (m^2)
-mass = 0.02  # Mass of the fruit (kg)
 inity = 0  # Initial height (m)
 wind = -5  # Wind velocity （vector) (m/s)
-angles = 45  # Launch Angle (degree)
-angles = angles / 180 * math.pi  # Convert to radian
+
+launch_angle = launch_angle / 180 * math.pi  # Convert to radian
 
 
 def coef_calculation(c, p, A, mass):
@@ -34,7 +33,7 @@ def coef_calculation(c, p, A, mass):
     return coef
 
 
-coef = coef_calculation(c, p, A, mass)
+coef = coef_calculation(c, p, A, fruit_weight)
 
 
 def traj_fr(coef, angle, v0, inity):  # function that computes trajectory for some launch angle & velocity
@@ -105,7 +104,7 @@ plt.plot(angle_data, distance_data)
 
 
 def plot_graph(v, explanation):
-    (x, y, duration, distance) = traj_fr(coef, angles, v, inity)  # define variables for output of traj_fr function
+    (x, y, duration, distance) = traj_fr(coef, launch_angle, v, inity)  # define variables for output of traj_fr function
 
     print(explanation, ' Distance: ', distance)
     print('Duration: ', duration)
