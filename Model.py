@@ -2,14 +2,24 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math
 import scipy.constants as const
+
 g = const.g  # gravitational constant
 x_length = 1  # Length of x
 Length_ratio = 3.75  # y/x
 Counterweight = 50  # Mass of the counterweight
 fruit_weight = 0.02  # Mass of the fruit (kg)
-initial_angle = 90
+initial_angle = -45  # Horizontal level arm Initial angle (degree)
 launch_angle = 45  # Launch Angle (degree)
+rod_weight = 1  # Weight of the rod
 
+
+def rod_mass_calculation(total_mass, length_ratio):
+    mass_x = total_mass / (1 + length_ratio)
+    mass_y = total_mass * length_ratio / (1 + length_ratio)
+
+    return mass_x, mass_y
+
+mass_x, mass_y = rod_mass_calculation(rod_weight, Length_ratio)
 # -----------------------分割线----------------------------------------
 
 # When the coefficient is very large, it could cause stack overflow
