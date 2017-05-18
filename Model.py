@@ -14,10 +14,10 @@ rod_weight = 1  # Weight of the rod
 
 
 def rod_mass_calculation(total_mass, ratio):
-    mass_x = total_mass / (1 + ratio)
-    mass_y = total_mass * ratio / (1 + ratio)
+    x = total_mass / (1 + ratio)
+    y = total_mass * ratio / (1 + ratio)
 
-    return mass_x, mass_y
+    return x, y
 
 mass_x, mass_y = rod_mass_calculation(rod_weight, length_ratio)
 # -----------------------分割线----------------------------------------
