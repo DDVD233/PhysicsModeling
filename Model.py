@@ -3,20 +3,22 @@ import numpy as np
 import math
 import scipy.constants as const
 
+# -----------------------分割线----------------------------------------
+
 # When the coefficient is very large, it could cause stack overflow
 
 g = const.g  # gravitational constant
-dt = 1e-5  # integration time step (delta t)
-v0 = 35  # Average speed at t=0
+dt = 1e-9  # integration time step (delta t)
+v0 = 15  # Average speed at t=0
 v0min = 30  # Minimum Speed
 v0max = 40  # Maximum Speed
 time = np.arange(0, 2000, dt)  # create time axis
 c = 0.47  # Drag Coefficient
 p = 1.225  # Density of the air (kg/m^3)
 A = 0.01  # Surface Area (m^2)
-mass = 0.2  # Mass of the fruit (kg)
+mass = 0.02  # Mass of the fruit (kg)
 inity = 0  # Initial height (m)
-wind = 0  # Wind velocity （vector) (m/s)
+wind = -5  # Wind velocity （vector) (m/s)
 angles = 45  # Launch Angle (degree)
 angles = angles / 180 * math.pi  # Convert to radian
 
@@ -70,6 +72,7 @@ def traj_fr(coef, angle, v0, inity):  # function that computes trajectory for so
     # print('Max: X:', maxy_x, 'Y:', maxy)
     return x, y, (dt * i), x[i]  # return x, y, flight time, range of projectile
 
+
 '''
 angle_data = np.zeros(len(time))
 distance_data = np.zeros(len(time))
@@ -103,6 +106,7 @@ def plot_graph(v, explanation):
 
     plt.plot(x, y, label=explanation)  # quick plot of x vs y to check trajectory
     return x, y
+
 
 # xmax, ymax = plot_graph(v0max, 'Maximum')
 # xmin, ymin = plot_graph(v0min, 'Minimum')
