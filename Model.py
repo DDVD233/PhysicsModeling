@@ -6,11 +6,15 @@ import scipy.constants as const
 g = const.g  # gravitational constant
 x_length = 1  # Length of x
 length_ratio = 3.75  # y/x
+y_length = 3.75 # Length of y
 counterweight = 50  # Mass of the counterweight
 fruit_weight = 0.02  # Mass of the fruit (kg)
 initial_angle = -45  # Horizontal level arm Initial angle (degree)
 launch_angle = 45  # Launch Angle (degree)
 rod_weight = 1  # Weight of the rod
+pi = math.pi
+
+
 
 
 def rod_mass_calculation(total_mass, ratio):
@@ -19,7 +23,44 @@ def rod_mass_calculation(total_mass, ratio):
 
     return x, y
 
-mass_x, mass_y = rod_mass_calculation(rod_weight, length_ratio)
+mass_x, mass_y = rod_mass_calculation(rod_weight, length_ratio)  # mass of x and y
+
+def lever_system_torque_calculation:
+    torque = (mass_x + counterweight) * g * x_length + (mass_y + fruit_weight) * g * y_length
+
+    return torque
+
+torque = lever_system_torque_calculation()
+
+def lever_system_monment_of_inertia_calculation:
+    moment_of_inertia = ((1/3) * mass_x * g * (x_length **2) + counterweight * (x_length **2) ) + ((1/3) * mass_y * g * (y_length **2) + fruit_weight * (y_length **2))
+
+    return moment_of_inertia
+
+moment_of_inertia = lever_system_monment_of_inertia_calculation()
+
+def angular_acceleration_calculation:
+    angular_acceleration = torque / moment_of_inertia
+
+    return angular_acceleration
+
+angular_acceleration = angular_acceleration_calculation()
+
+def theta_lever_has_moved_calculation:
+    theta = (launch_angle - initial_angle) * pi / 180
+
+    return theta
+
+theta = theta_lever_has_moved_calculation()
+
+def final_velocity_calculation:
+    final_velocity = sqrt(2 * (y_length **2) * angular_acceleration * theta)
+
+    return final_velocity
+
+final_velocity = final_velocity_calculation()
+
+
 # -----------------------分割线----------------------------------------
 
 # When the coefficient is very large, it could cause stack overflow
