@@ -33,7 +33,7 @@ c = 0.47  # Drag Coefficient
 p = 1.225  # Density of the air (kg/m^3)
 A = 0.01  # Surface Area (m^2)
 inity = 0  # Initial height (m)
-wind = -5  # Wind velocity （vector) (m/s)
+windx = -5  # Wind velocity （vector) (m/s)
 
 launch_angle = launch_angle / 180 * math.pi  # Convert to radian
 
@@ -51,19 +51,20 @@ def traj_fr(coef, angle, v0, inity):  # function that computes trajectory for so
     vy0 = math.sin(angle) * v0  # compute y components of starting velocity
     x = np.zeros(len(time))  # initialize x array
     y = np.zeros(len(time))  # initialize y array
-    vx = np.zeros(len(time))
-    vy = np.zeros(len(time))
-    ax = np.zeros(len(time))
-    ay = np.zeros(len(time))
+    vx = np.zeros(len(time))  # initialize vx array
+    vy = np.zeros(len(time))  # initialize vy array
+    ax = np.zeros(len(time))  # initialize ax array
+    ay = np.zeros(len(time))  # initialize ay array
 
     x[0], y[0] = 0, inity  # initial position at t=0s, ie motion starts at (0,0)
     vx[0] = vx0
     vy[0] = vy0
-    if wind > vx[0]:
-        ax[0] = coef * ((vx[0] - wind) ** 2)
+    if windx > vx[0]:
+        ax[0] = coef * ((vx[0] - windx) ** 2)
     else:
-        ax[0] = -coef * ((vx[0] - wind) ** 2)
-    # When the wind velocity is greater than the initial velocity, the "air resistance" actually accelerates the fruit
+        ax[0] = -coef * ((vx[0] - windx) ** 2)
+    # When the windx velocity is greater than the initial velocity, the "air resistance" actually accelerates the fruit
+
     ay[0] = -coef * (vy[0] ** 2) - g
     i = 0
     while y[i] >= 0:  # loop continuous until y becomes <0, ie projectile hits ground
@@ -72,10 +73,10 @@ def traj_fr(coef, angle, v0, inity):  # function that computes trajectory for so
         else:
             ay[i + 1] = coef * (vy[i] ** 2) - g
 
-        if wind > vx[0]:
-            ax[i + 1] = coef * ((vx[i] - wind) ** 2)
+        if windx > vx[0]:
+            ax[i + 1] = coef * ((vx[i] - windx) ** 2)
         else:
-            ax[i + 1] = -coef * ((vx[i] - wind) ** 2)
+            ax[i + 1] = -coef * ((vx[i] - windx) ** 2)
         vx[i + 1] = vx[i] + ax[i + 1] * dt
         vy[i + 1] = vy[i] + ay[i + 1] * dt
         x[i + 1] = x[i] + (vx[i + 1] + vx[i]) * dt / 2
