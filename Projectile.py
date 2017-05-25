@@ -35,7 +35,6 @@ def traj_fr(coef, angle, v0, inity):  # function that computes trajectory for so
         ay[0] = -coef * ((wind_y - vy[0]) ** 2) - g
     # When the wind velocity is greater than the initial velocity, the "air resistance" actually accelerates the fruit
 
-    ay[0] = -coef * (vy[0] ** 2) - g
     i = 0
     while y[i] >= 0:  # loop continuous until y becomes <0, ie projectile hits ground
         if vy[i] > wind_y:
@@ -43,7 +42,7 @@ def traj_fr(coef, angle, v0, inity):  # function that computes trajectory for so
         else:
             ay[i + 1] = coef * ((wind_y - vy[i]) ** 2) - g
 
-        if windx > vx[0]:
+        if windx > vx[i]:
             ax[i + 1] = coef * ((vx[i] - windx) ** 2)
         else:
             ax[i + 1] = -coef * ((vx[i] - windx) ** 2)
@@ -99,7 +98,7 @@ def plot_graph(v, explanation):
 # xmin, ymin = plot_graph(v0min, 'Minimum')
 # plt.fill_between(time, ymin, ymax, where=(ymax > ymin), color='blue', alpha=0.25)
 plot_graph(final_velocity, 'Average')
-plt.xlabel('time')
+plt.xlabel('Distance')
 plt.ylabel('height')
 plt.legend(loc='upper left')
 plt.show()
