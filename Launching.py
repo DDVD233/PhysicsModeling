@@ -11,17 +11,17 @@ def rod_mass_calculation(total_mass, ratio):
 mass_x, mass_y = rod_mass_calculation(rod_weight, length_ratio)  # mass of x and y
 
 
-def lever_system_torque_calculation():
-    torque = (mass_x + counterweight) * g * x_length + (mass_y + fruit_weight) * g * y_length
+def lever_system_changing_height_calculation():
+    changing_height = math.sqrt(2 * (y_length **2) - 4 * y_length * math.cos(launch_angle - initial_angle))
 
-    return torque
+    return changing_height
 
 
-torque = lever_system_torque_calculation()
+changing_height = lever_system_changing_height_calculation()
 
 
 def lever_system_monment_of_inertia_calculation():
-    moment_of_inertia = ((1 / 3) * mass_x * g * (x_length ** 2) + counterweight * (x_length ** 2)) + ((1 / 3) * mass_y * g * (y_length ** 2) + fruit_weight * (y_length ** 2))
+    moment_of_inertia = ((1/3) * rod_weight * (rod_length **2) + counterweight * (x_length ** 2)) + fruit_weight * (y_length ** 2))
 
     return moment_of_inertia
 
@@ -31,6 +31,7 @@ moment_of_inertia = lever_system_monment_of_inertia_calculation()
 
 def angular_acceleration_calculation():
     angular_acceleration = torque / moment_of_inertia
+    print('Angular Acceleration: ', angular_acceleration)
 
     return angular_acceleration
 

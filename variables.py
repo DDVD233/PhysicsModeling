@@ -6,15 +6,17 @@ import matplotlib.pyplot as plt
 
 
 g = const.g  # gravitational constant
-x_length = 1  # Length of x
+rod_length = 67 # total length of rod
+x_length = 0.75  # Length of x
 length_ratio = 3.75  # y/x
-y_length = 3.75  # Length of y
-counterweight = 50  # Mass of the counterweight
-fruit_weight = 0.02  # Mass of the fruit (kg)
+y_length = x_length * length_ratio  # Length of y
+counterweight = 1000  # Mass of the counterweight
+fruit_weight = 1  # Mass of the fruit (kg)
 initial_angle = -45  # Horizontal level arm Initial angle (degree)
 launch_angle = 45  # Launch Angle (degree)
-rod_weight = 1  # Weight of the rod
+rod_weight = 0.168  # mass of the rod
 pi = math.pi
+
 
 # When the coefficient is very large, it could cause stack overflow
 
