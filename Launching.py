@@ -20,13 +20,13 @@ def lever_system_torque_calculation():
 torque = lever_system_torque_calculation()
 
 
-def lever_system_momeent_of_inertia_calculation():
+def lever_system_monment_of_inertia_calculation():
     moment_of_inertia = ((1 / 3) * mass_x * g * (x_length ** 2) + counterweight * (x_length ** 2)) + ((1 / 3) * mass_y * g * (y_length ** 2) + fruit_weight * (y_length ** 2))
 
     return moment_of_inertia
 
 
-moment_of_inertia = lever_system_momeent_of_inertia_calculation()
+moment_of_inertia = lever_system_monment_of_inertia_calculation()
 
 
 def angular_acceleration_calculation():
