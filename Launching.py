@@ -31,6 +31,14 @@ def lever_system_changing_height_calculation(mass_x, mass_y):
 
 changing_height = lever_system_changing_height_calculation(mass_x, mass_y)
 
+def gravitational_potential_energy_calculation():
+    gravitational_potential_energy = total_mass * changing_height * g
+
+    return gravitational_potential_energy
+
+gravitational_potential_energy = gravitational_potential_energy_calculation()
+
+
 
 def lever_system_monment_of_inertia_calculation():
     moment_of_inertia = ((1/3) * rod_weight * (rod_length **2) + counterweight * (x_length ** 2)) + fruit_weight * (y_length ** 2))
