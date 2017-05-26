@@ -49,13 +49,12 @@ def lever_system_monment_of_inertia_calculation():
 moment_of_inertia = lever_system_monment_of_inertia_calculation()
 
 
-def angular_kindetic_energy_calculation():
-    angular_kinetic_energy = gravitaional_potential_energy
+def angular_kinetic_energy_calculation():
+    angular_kinetic_energy = gravitational_potential_energy
 
     return angular_kinetic_energy
 
-angular_kinetic_energy = angular_kindetic_energy_calculation()
-
+angular_kinetic_energy = angular_kinetic_energy_calculation()
 
 
 def final_angular_velocity_calculation():
