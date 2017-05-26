@@ -1,19 +1,18 @@
 import numpy as np
 import math
 import scipy.constants as const
-import Projectile
-import matplotlib.pyplot as plt
 
 
 g = const.g  # gravitational constant
-rod_length = 67 # total length of rod
+rod_length = 67  # total length of rod
 x_length = 0.75  # Length of x
 length_ratio = 3.75  # y/x
 y_length = x_length * length_ratio  # Length of y
 counterweight = 1000  # Mass of the counterweight
 fruit_weight = 1  # Mass of the fruit (kg)
 initial_angle = -45 * math.pi / 180  # Horizontal level arm Initial angle (degree)
-launch_angle = 45 * math.pi / 180  # Launch Angle (degree)
+launch_angle = 45  # Launch Angle (degree)
+launch_angle_radian = launch_angle * math.pi / 180
 rod_weight = 0.168  # mass of the rod
 
 
@@ -34,11 +33,3 @@ A = 0.01  # Surface Area (m^2)
 inity = 0  # Initial height (m)
 windx = 0  # Wind velocity in the x direction（vector) (m/s)
 wind_y = 0  # Wind velocity in the y direction（vector) (m/s)
-
-launch_angle = launch_angle / 180 * math.pi  # Convert to radian
-
-Projectile.plot_graph(final_velocity, 'Average')
-Projectile.plt.xlabel('Distance')
-plt.ylabel('height')
-plt.legend(loc='upper left')
-plt.show()

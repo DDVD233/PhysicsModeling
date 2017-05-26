@@ -1,6 +1,6 @@
-import matplotlib.pyplot as plt
 from variables import *
-from Launching import final_velocity
+import matplotlib.pyplot as plt
+from Launching import final_velocity_calculation
 
 
 def coef_calculation(c, p, A, mass):
@@ -97,7 +97,12 @@ def plot_graph(v, explanation):
 # xmax, ymax = plot_graph(v0max, 'Maximum')
 # xmin, ymin = plot_graph(v0min, 'Minimum')
 # plt.fill_between(time, ymin, ymax, where=(ymax > ymin), color='blue', alpha=0.25)
-plot_graph(final_velocity, 'Average')
+
+launch_angle = launch_angle / 180 * math.pi  # Convert to radian
+
+v0 = final_velocity_calculation(rod_weight, length_ratio, counterweight, fruit_weight
+                               , x_length, y_length, initial_angle, launch_angle, g, rod_length)
+plot_graph(v0, "Average")
 plt.xlabel('Distance')
 plt.ylabel('height')
 plt.legend(loc='upper left')
