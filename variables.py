@@ -12,10 +12,9 @@ length_ratio = 3.75  # y/x
 y_length = x_length * length_ratio  # Length of y
 counterweight = 1000  # Mass of the counterweight
 fruit_weight = 1  # Mass of the fruit (kg)
-initial_angle = -45  # Horizontal level arm Initial angle (degree)
-launch_angle = 45  # Launch Angle (degree)
+initial_angle = -45 * math.pi / 180  # Horizontal level arm Initial angle (degree)
+launch_angle = 45 * math.pi / 180  # Launch Angle (degree)
 rod_weight = 0.168  # mass of the rod
-pi = math.pi
 
 
 # When the coefficient is very large, it could cause stack overflow

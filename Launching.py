@@ -11,13 +11,18 @@ def rod_mass_calculation(total_mass, ratio):
 mass_x, mass_y = rod_mass_calculation(rod_weight, length_ratio)  # mass of x and y
 
 
-def lever_system_changing_height_calculation():
-    changing_height = math.sqrt(2 * (y_length **2) - 4 * y_length * math.cos(launch_angle - initial_angle))
+def lever_system_changing_height_calculation(mass_x, mass_y):
+    total_mass = rod_weight + fruit_weight + counterweight
+    changing_angle = math.sin(-initial_angle) + math.sin(launch_angle)  # See paper for detail
+    # Because in this equation we are assuming the initial angle is positive, while in the variable it's negative,
+    # we added a minus sign before it.
+    mx_sum = counterweight * x_length + x_length / 2 * mass_x - fruit_weight * y_length - y_length/2 * mass_y
+    changing_height = changing_angle * mx_sum / total_mass
 
     return changing_height
 
 
-changing_height = lever_system_changing_height_calculation()
+changing_height = lever_system_changing_height_calculation(mass_x, mass_y)
 
 
 def lever_system_monment_of_inertia_calculation():
