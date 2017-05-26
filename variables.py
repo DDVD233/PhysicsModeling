@@ -4,16 +4,17 @@ import scipy.constants as const
 
 
 g = const.g  # gravitational constant
-rod_length = 67  # total length of rod
-x_length = 0.75  # Length of x
-length_ratio = 3.75  # y/x
+
+x_length = 0.5  # Length of x
+length_ratio = 3.5  # y/x
 y_length = x_length * length_ratio  # Length of y
-counterweight = 1000  # Mass of the counterweight
-fruit_weight = 1  # Mass of the fruit (kg)
+rod_length = x_length + y_length  # total length of rod
+counterweight = 9.07  # Mass of the counterweight
+fruit_weight = 0.058  # Mass of the fruit (kg)
 initial_angle = -45 * math.pi / 180  # Horizontal level arm Initial angle (degree)
 launch_angle = 45  # Launch Angle (degree)
 launch_angle_radian = launch_angle * math.pi / 180
-rod_weight = 0.168  # mass of the rod
+rod_weight = 0.35  # mass of the rod
 
 
 # When the coefficient is very large, it could cause stack overflow
