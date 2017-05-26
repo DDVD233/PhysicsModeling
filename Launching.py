@@ -1,14 +1,21 @@
 from variables import *
 
 
-def rod_mass_calculation(total_mass, ratio):
-    x = total_mass / (1 + ratio)
-    y = total_mass * ratio / (1 + ratio)
+def rod_mass_calculation(rod_weight, ratio):
+    x = rod_weight / (1 + ratio)
+    y = rod_weight * ratio / (1 + ratio)
 
     return x, y
 
 
 mass_x, mass_y = rod_mass_calculation(rod_weight, length_ratio)  # mass of x and y
+
+def total_mass_calculation():
+    total_mass = (rod_weight + counterweight + fruit_weight)
+
+    return total_mass
+
+total_mass = total_mass_calculation()
 
 
 def lever_system_changing_height_calculation(mass_x, mass_y):
@@ -34,27 +41,25 @@ def lever_system_monment_of_inertia_calculation():
 moment_of_inertia = lever_system_monment_of_inertia_calculation()
 
 
-def angular_acceleration_calculation():
-    angular_acceleration = torque / moment_of_inertia
-    print('Angular Acceleration: ', angular_acceleration)
+def angular_kindetic_energy_calculation():
+    angular_kinetic_energy = gravitaional_potential_energy
 
-    return angular_acceleration
+    return angular_kinetic_energy
 
-
-angular_acceleration = angular_acceleration_calculation()
+angular_kinetic_energy = angular_kindetic_energy_calculation()
 
 
-def theta_lever_has_moved_calculation():
-    theta = (launch_angle - initial_angle) * pi / 180
 
-    return theta
+def final_angular_velocity_calculation():
+    final_angular_velocity = math.sqrt((2 * gravitational_potential_energy) / moment_of_inertia)
 
+    return final_angular_velocity
 
-theta = theta_lever_has_moved_calculation()
+final_angular_velocity = final_angular_velocity_calculation()
 
 
 def final_velocity_calculation():
-    final_velocity = math.sqrt(2 * (y_length ** 2) * angular_acceleration * theta)
+    final_velocity = final_angular_velocity * y_length
 
     return final_velocity
 
