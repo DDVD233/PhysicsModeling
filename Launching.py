@@ -16,10 +16,11 @@ def total_mass_calculation(rod_weight, counterweight, fruit_weight):
 
 def lever_system_changing_height_calculation(total_mass, mass_x, mass_y, initial_angle,
                                              launch_angle, counterweight, fruit_weight, x_length, y_length):
-    changing_angle = math.sin(-initial_angle) + math.sin(launch_angle)  # See paper for detail
+    changing_angle = math.sin(-initial_angle * math.pi / 180) + math.sin(launch_angle * math.pi / 180)
+    # See paper for detail
     # Because in this equation we are assuming the initial angle is positive, while in the variable it's negative,
     # we added a minus sign before it.
-    mx_sum = counterweight * x_length + x_length / 2 * mass_x - fruit_weight * y_length - y_length/2 * mass_y
+    mx_sum = counterweight * x_length + x_length / 2 * mass_x - fruit_weight * y_length - y_length / 2 * mass_y
     changing_height = changing_angle * mx_sum / total_mass
 
     return changing_height
@@ -31,8 +32,10 @@ def gravitational_potential_energy_calculation(total_mass, changing_height, g):
     return gravitational_potential_energy
 
 
-def lever_system_monment_of_inertia_calculation(rod_weight, rod_length, counterweight, x_length, fruit_weight, y_length):
-    moment_of_inertia = (1/3) * rod_weight * (rod_length **2) + counterweight * (x_length ** 2) + fruit_weight * (y_length ** 2)
+def lever_system_monment_of_inertia_calculation(rod_weight, rod_length, counterweight, x_length, fruit_weight,
+                                                y_length):
+    moment_of_inertia = (1 / 3) * rod_weight * (rod_length ** 2) + counterweight * (x_length ** 2) + fruit_weight * (
+    y_length ** 2)
 
     return moment_of_inertia
 
@@ -49,7 +52,8 @@ def final_velocity_calculation(rod_weight, length_ratio, counterweight, fruit_we
 
     total_mass = total_mass_calculation(rod_weight, counterweight, fruit_weight)
 
-    changing_height = lever_system_changing_height_calculation(total_mass, mass_x, mass_y, initial_angle, launch_angle_radian
+    changing_height = lever_system_changing_height_calculation(total_mass, mass_x, mass_y, initial_angle,
+                                                               launch_angle_radian
                                                                , counterweight, fruit_weight, x_length, y_length)
 
     gravitational_potential_energy = gravitational_potential_energy_calculation(total_mass, changing_height, g)
@@ -64,4 +68,3 @@ def final_velocity_calculation(rod_weight, length_ratio, counterweight, fruit_we
     print('Final Velocity:', final_velocity)
 
     return final_velocity
-
